@@ -9,46 +9,35 @@ public class RegistroEstudiantes{
 
     public static void main(String[] args) {
 
-        int opcion;
-
+        int opcion = 0;
         do {
             System.out.println("\n===== UDB VIRTUAL =====");
-            System.out.println("PROGRAMACIÓN ORIENTADA A OBJETOS");
-            System.out.println("1. Ingresar alumno");
-            System.out.println("2. Buscar alumno");
-            System.out.println("3. Eliminar alumno");
-            System.out.println("4. Mostrar todos los alumnos");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("PROGRAMACION ORIENTADA A OBJETOS G02T.");
+            System.out.println("1. Ingrese al alumno.");
+            System.out.println("2. Buscar al alumno.");
+            System.out.println("3. Eliminar al alumno.");
+            System.out.println("4. Mostrar todos los alumnos disponilbes.");
+            System.out.println("5. Salir.");
+            System.out.print("Porvafor, seleccione una opcion:. ");
 
-            opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    ingresarAlumno();
-                    break;
-
-                case 2:
-                    buscarAlumno();
-                    break;
-
-                case 3:
-                    eliminarAlumno();
-                    break;
-
-                case 4:
-                    mostrarTodos();
-                    break;
-
-                case 5:
-                    System.out.println("Programa finalizado.");
-                    break;
-
-                default:
-                    System.out.println("Opción no válida.");
+            if (scanner.hasNextInt()) {
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+            } else {
+                System.out.println("Opción no válida, Porfavor seleccione una opcion Valida.");
+                scanner.nextLine(); // limpia lo que escribió mal para no dejarlo "atascado"
+                opcion = 0; // un número que no coincide con ningún case
+                continue; // regresa directo al inicio del do-while, sin pasar por el switch
             }
 
+            switch (opcion) {
+                case 1 -> ingresarAlumno();
+                case 2 -> buscarAlumno();
+                case 3 -> eliminarAlumno();
+                case 4 -> mostrarTodos();
+                case 5 -> System.out.println("Programa finalizado.");
+                default -> System.out.println("Opción no válida, Porfavor seleccione una opcion Valida.");
+            }
         } while (opcion != 5);
 
         scanner.close();
